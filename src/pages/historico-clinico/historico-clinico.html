@@ -1,7 +1,7 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Histórico Clínico</ion-title>
+  <ion-navbar color="primary">
+    <ion-title color="white">História Clínica</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -11,7 +11,7 @@
   <form [formGroup]="historicoClinicoForm" (ngSubmit)="onSubmit($event)">
     <ion-item>
       <ion-label>Gênero</ion-label>
-      <ion-select placeholder="Selecione um gênero" formControlName="sexo" [(ngModel)]="currentUser.sexo">
+      <ion-select placeholder="Selecione um sexo" formControlName="sexo" [(ngModel)]="currentUser.sexo">
         <ion-option value="masculino">Masculino</ion-option>
         <ion-option value="feminino">Feminino</ion-option>
       </ion-select>
@@ -19,7 +19,7 @@
 
     <ion-item>
       <ion-label floating>Peso(Kg)</ion-label>
-      <ion-input type="text" formControlName="peso" [(ngModel)]="currentUser.peso"></ion-input>
+      <ion-input type="number" formControlName="peso" [(ngModel)]="currentUser.peso"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -37,47 +37,47 @@
     <br>
     <!-- Historico Pessoal -->
     <ion-item>
-      <ion-label>Fuma?</ion-label>
+      <ion-label style="white-space: normal">Fuma?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_fuma" [(ngModel)]="currentUser.sn_fuma"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>Consome bebidas alcoolicas?</ion-label>
+      <ion-label style="white-space: normal">Consome bebidas alcoólicas?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_bebi" [(ngModel)]="currentUser.sn_bebi"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>Já Infartou?</ion-label>
+      <ion-label style="white-space: normal">Já Infartou?(Derrame Cerebral)</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_infartou" [(ngModel)]="currentUser.sn_infartou"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>Já teve AVC?</ion-label>
+      <ion-label style="white-space: normal">Já teve AVC?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_avc" [(ngModel)]="currentUser.sn_avc"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>Tem pressão alta?</ion-label>
+      <ion-label style="white-space: normal">Tem pressão alta?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_pressao_alta" [(ngModel)]="currentUser.sn_pressao_alta"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>Tem diabetes?</ion-label>
+      <ion-label style="white-space: normal">Tem diabetes?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_diabetes" [(ngModel)]="currentUser.sn_diabetes"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>Tem estilo de vida sedentário?</ion-label>
+      <ion-label style="white-space: normal">Tem estilo de vida sedentário?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_sedentario" [(ngModel)]="currentUser.sn_sedentario"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>Tem algum problema cardíaco?</ion-label>
+      <ion-label style="white-space: normal">Tem algum problema cardíaco?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_cardiaco" [(ngModel)]="currentUser.sn_cardiaco"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>Já realizou alguma cirurgia cardíaca?</ion-label>
+      <ion-label style="white-space: normal">Já realizou alguma cirurgia cardíaca?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_cirurgia_cardiaca" [(ngModel)]="currentUser.sn_cirurgia_cardiaca"></ion-checkbox>
     </ion-item>
 
@@ -85,27 +85,27 @@
     <br>
     <!-- Historico da familia -->
     <ion-item>
-      <ion-label>Alguém da sua familia já infartou?</ion-label>
+      <ion-label style="white-space: normal">Alguém da sua familia já infartou?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_familia_infartou" [(ngModel)]="currentUser.sn_familia_infartou"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>Alguém da sua família já teve AVC?</ion-label>
+      <ion-label style="white-space: normal">Alguém da sua família já teve AVC?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_familia_avc" [(ngModel)]="currentUser.sn_familia_avc"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>Alguém da sua família tem pressão alta?</ion-label>
+      <ion-label style="white-space: normal">Alguém da sua família tem pressão alta?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_familia_pressao_alta" [(ngModel)]="currentUser.sn_familia_pressao_alta"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>Alguém da sua família tem diabetes?</ion-label>
+      <ion-label style="white-space: normal">Alguém da sua família tem diabetes?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_familia_diabetes" [(ngModel)]="currentUser.sn_familia_diabetes"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>Alguém da sua família tem algum problema cardiáco?</ion-label>
+      <ion-label style="white-space: normal">Alguém da sua família tem algum problema cardiáco?</ion-label>
       <ion-checkbox color="primary" checked="false" formControlName="sn_familia_cardiaco" [(ngModel)]="currentUser.sn_familia_cardiaco"></ion-checkbox>
     </ion-item>
 

@@ -1,152 +1,152 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Identificar Sinais de Infarto</ion-title>
+  <ion-navbar color="primary">
+    <ion-title color="white">Identificar Sinais de Infarto</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="white-space: normal">
   <form [formGroup]="sinaisInfartoForm" (ngSubmit)="onSubmit($event)">
     <h3 text-center ion-text>O que você está sentindo?</h3>
 
     <br>
     <h4 text-left ion-text>Dor no peito...</h4>
     <ion-item>
-      <ion-label>em sensação de facada, pontadas</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_peito_facada" [(ngModel)]="sn_peito_facada"></ion-checkbox>
+      <ion-label style="white-space: normal">em sensação de facada, pontadas</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_peito_facada" [(ngModel)]="sn_peito_facada" (click)="onDisabledBlocoPeito()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>em sensação de aperto</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_peito_aperto" [(ngModel)]="sn_peito_aperto"></ion-checkbox>
+      <ion-label style="white-space: normal">em sensação de aperto</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_peito_aperto" [(ngModel)]="sn_peito_aperto" (click)="onDisabledBlocoPeito()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>constante (não para)</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_peito_constante" [(ngModel)]="sn_peito_constante"></ion-checkbox>
+      <ion-label style="white-space: normal">constante (não para)</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_peito_constante" [(ngModel)]="sn_peito_constante" (click)="onDisabledBlocoPeito()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>que vai e volta</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_peito_vai_volta" [(ngModel)]="sn_peito_vai_volta"></ion-checkbox>
+      <ion-label style="white-space: normal">que vai e volta</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_peito_vai_volta" [(ngModel)]="sn_peito_vai_volta" (click)="onDisabledBlocoPeito()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>nenhuma</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_peito_nenhuma" (click)="onDisabled()"></ion-checkbox>
+      <ion-label style="white-space: normal">nenhuma</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_peito_nenhuma" [(ngModel)]="sn_peito_nenhuma" (click)="onDisabledNenhumaBlocoPeito()"></ion-checkbox>
     </ion-item>
 
     <br>
     <h4 text-left ion-text>Dor que irradia para...</h4>
     <ion-item>
-      <ion-label>estômago</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_irradia_estomago" [(ngModel)]="sn_irradia_estomago"></ion-checkbox>
+      <ion-label style="white-space: normal">estômago</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_irradia_estomago" [(ngModel)]="sn_irradia_estomago" (click)="onDisabledBlocoIrradia()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>queixo</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_irradia_queixo" [(ngModel)]="sn_irradia_queixo"></ion-checkbox>
+      <ion-label style="white-space: normal">queixo</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_irradia_queixo" [(ngModel)]="sn_irradia_queixo" (click)="onDisabledBlocoIrradia()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>costas</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_irradia_costas" [(ngModel)]="sn_irradia_costas"></ion-checkbox>
+      <ion-label style="white-space: normal">costas</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_irradia_costas" [(ngModel)]="sn_irradia_costas" (click)="onDisabledBlocoIrradia()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>braço esquerdo</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_irradia_braco" [(ngModel)]="sn_irradia_braco"></ion-checkbox>
+      <ion-label style="white-space: normal">braço esquerdo</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_irradia_braco" [(ngModel)]="sn_irradia_braco" (click)="onDisabledBlocoIrradia()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>nenhuma</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_irradia_nenhuma" [(ngModel)]="sn_irradia_nenhuma" (click)="onDisabled()"></ion-checkbox>
+      <ion-label style="white-space: normal">nenhuma</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_irradia_nenhuma" [(ngModel)]="sn_irradia_nenhuma" (click)="onDisabledNenhumaBlocoIrradia()"></ion-checkbox>
     </ion-item>
 
     <br>
     <h4 text-left ion-text>Outros:</h4>
     <ion-item>
-      <ion-label>dificuldade para respirar</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_respirar" [(ngModel)]="sn_outros_respirar"></ion-checkbox>
+      <ion-label style="white-space: normal">dificuldade para respirar</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_respirar" [(ngModel)]="sn_outros_respirar" (click)="onDisabledBlocoOutros()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>formigamento nos lábios ou braço</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_formigamento" [(ngModel)]="sn_outros_formigamento"></ion-checkbox>
+      <ion-label style="white-space: normal">formigamento nos lábios ou braço</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_formigamento" [(ngModel)]="sn_outros_formigamento" (click)="onDisabledBlocoOutros()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>tontura</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_tontura" [(ngModel)]="sn_outros_tontura"></ion-checkbox>
+      <ion-label style="white-space: normal">tontura</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_tontura" [(ngModel)]="sn_outros_tontura" (click)="onDisabledBlocoOutros()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>enjôo</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_enjoo" [(ngModel)]="sn_outros_enjoo"></ion-checkbox>
+      <ion-label style="white-space: normal">enjôo</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_enjoo" [(ngModel)]="sn_outros_enjoo" (click)="onDisabledBlocoOutros()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>cansaço</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_cansaco" [(ngModel)]="sn_outros_cansaco"></ion-checkbox>
+      <ion-label style="white-space: normal">cansaço</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_cansaco" [(ngModel)]="sn_outros_cansaco" (click)="onDisabledBlocoOutros()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>suor excessivo</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_suor" [(ngModel)]="sn_outros_suor"></ion-checkbox>
+      <ion-label style="white-space: normal">suor excessivo</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_suor" [(ngModel)]="sn_outros_suor" (click)="onDisabledBlocoOutros()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>nenhuma</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_nenhuma" (click)="onDisabled()"></ion-checkbox>
+      <ion-label style="white-space: normal">nenhuma</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_outros_nenhuma" [(ngModel)]="sn_outros_nenhuma" (click)="onDisabledNenhumaBlocoOutros()"></ion-checkbox>
     </ion-item>
 
     <br>
     <h5 text-left ion-text>NAS ÚLTIMAS 24H, VOCÊ...</h5>
     <ion-item>
-      <ion-label>discutiu com alguém</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_discutiu" [(ngModel)]="sn_ultimas_discutiu"></ion-checkbox>
+      <ion-label style="white-space: normal">discutiu com alguém</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_discutiu" [(ngModel)]="sn_ultimas_discutiu" (click)="onDisabledBlocoUltima()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>passou por algum evento estressante</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_evento_estressante" [(ngModel)]="sn_ultimas_evento_estressante"></ion-checkbox>
+      <ion-label style="white-space: normal">passou por algum evento estressante</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_evento_estressante" [(ngModel)]="sn_ultimas_evento_estressante" (click)="onDisabledBlocoUltima()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>dormiu mal</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_dormiu" [(ngModel)]="sn_ultimas_dormiu"></ion-checkbox>
+      <ion-label style="white-space: normal">dormiu mal</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_dormiu" [(ngModel)]="sn_ultimas_dormiu" (click)="onDisabledBlocoUltima()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>não se alimentou bem</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_alimentou" [(ngModel)]="sn_ultimas_alimentou"></ion-checkbox>
+      <ion-label style="white-space: normal">não se alimentou bem</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_alimentou" [(ngModel)]="sn_ultimas_alimentou" (click)="onDisabledBlocoUltima()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>consumiu bebida alcoólica</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_bebida" [(ngModel)]="sn_ultimas_bebida"></ion-checkbox>
+      <ion-label style="white-space: normal">consumiu bebida alcoólica</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_bebida" [(ngModel)]="sn_ultimas_bebida" (click)="onDisabledBlocoUltima()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>consumiu algum tipo de droga ilícita</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_droga" [(ngModel)]="sn_ultimas_droga"></ion-checkbox>
+      <ion-label style="white-space: normal">consumiu algum tipo de droga ilícita</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_droga" [(ngModel)]="sn_ultimas_droga" (click)="onDisabledBlocoUltima()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>fez uso de algum medicamento</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_medicamento" [(ngModel)]="sn_ultimas_medicamento"></ion-checkbox>
+      <ion-label style="white-space: normal">fez uso de algum medicamento</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_medicamento" [(ngModel)]="sn_ultimas_medicamento" (click)="onDisabledBlocoUltima()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>praticou algum tipo de exercício físico</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_fisico" [(ngModel)]="sn_ultimas_fisico"></ion-checkbox>
+      <ion-label style="white-space: normal">praticou algum tipo de exercício físico</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_fisico" [(ngModel)]="sn_ultimas_fisico" (click)="onDisabledBlocoUltima()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
-      <ion-label>nenhuma</ion-label>
-      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_nenhuma" (click)="onDisabled()"></ion-checkbox>
+      <ion-label style="white-space: normal">nenhuma</ion-label>
+      <ion-checkbox color="primary" checked="false" formControlName="sn_ultimas_nenhuma" [(ngModel)]="sn_ultimas_nenhuma" (click)="onDisabledNenhumaBlocoUltima()"></ion-checkbox>
     </ion-item>
 
     <br>

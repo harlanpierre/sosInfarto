@@ -1,7 +1,7 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Login</ion-title>
+  <ion-navbar color="primary">
+    <ion-title color="white">Login - S.O.S Infarto</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,14 +10,14 @@
 <ion-content padding>
 
   <h1 text-center>
-    <ion-icon class="auth-icon" name="chatboxes" color="primary"></ion-icon>
+    <img class="round" [src]="'assets/images/logo-inicial.jpg'">
   </h1>
 
   <form [formGroup]="signinForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
 
     <ion-item>
       <ion-icon name="mail" item-start color="primary"></ion-icon>
-      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      <ion-input #focusInput type="email" placeholder="Email" formControlName="email"></ion-input>
     </ion-item>
 
     <ion-item>

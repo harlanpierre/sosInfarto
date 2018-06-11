@@ -1,3 +1,4 @@
+import { Contato } from './../models/contato.model';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
@@ -56,23 +57,19 @@ export class UserService extends BaseService {
   }
 
   create(user: User, uuid: string): Promise<void> {
-    this.user = user;
-    /*user.sn_fuma = false;
-    user.sn_bebi = false;
-    user.sn_infartou = false;
-    user.sn_avc = false;
-    user.sn_pressao_alta = false;
-    user.sn_diabetes = false;
-    user.sn_sedentario = false;
-    user.sn_cardiaco = false;
-    user.sn_cirurgia_cardiaca = false;
-    user.sn_familia_infartou = false;
-    user.sn_familia_avc = false;
-    user.sn_familia_pressao_alta = false;
-    user.sn_familia_diabetes = false;
-    user.sn_familia_cardiaco = false;*/
+    this.user.name = user.name;
+    this.user.username = user.username;
+    this.user.email = user.email;
+    this.user.contatos.push({
+      "id": "1",
+      "nome": "Exemplo",
+      "telefone": "999999999"
+    });
+
+    debugger
+    
     return this.db.object(`/users/${uuid}`)
-      .set(user)
+      .set(this.user)
       .catch(this.handlePromiseError);
   }
 
@@ -90,11 +87,16 @@ export class UserService extends BaseService {
     sn_familia_infartou: boolean, sn_familia_avc: boolean, sn_familia_pressao_alta: boolean,
     sn_familia_diabetes: boolean, sn_familia_cardiaco: boolean
   }): Promise<void> {
-
-    console.log('Estou no userService');
-    console.log(this.currentUser);
+    
     return this.currentUser
       .update(user)
+      .catch(this.handlePromiseError);
+  }
+
+  editContato(contatos: Contato[]): Promise<void> {
+    this.user.contatos = contatos;
+    return this.currentUser
+      .update(this.user)
       .catch(this.handlePromiseError);
   }
 

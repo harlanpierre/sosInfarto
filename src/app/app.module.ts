@@ -1,3 +1,4 @@
+import { SaibaMaisPage } from './../pages/saiba-mais/saiba-mais';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -13,6 +14,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AuthService } from './../providers/auth.service';
 import { CapitalizePipe } from './../pipes/capitalize.pipe';
 import { ChatPage } from './../pages/chat/chat';
+import { ContatosPage } from './../pages/contatos/contatos';
 import { ChatService } from './../providers/chat.service';
 import { CustomLoggedHeaderComponent } from './../components/custom-logged-header/custom-logged-header.component';
 import { MessageBoxComponent } from './../components/message-box/message-box.component';
@@ -21,6 +23,7 @@ import { HistoricoClinicoPage } from './../pages/historico-clinico/historico-cli
 import { HomePage } from '../pages/home/home';
 import { MyApp } from './app.component';
 import { ProgressBarComponent } from './../components/progress-bar/progress-bar.component';
+import { PrincipalPage } from './../pages/principal/principal';
 import { SigninPage } from './../pages/signin/signin';
 import { SignupPage } from './../pages/signup/signup';
 import { SinaisInfartoPage } from './../pages/sinais-infarto/sinais-infarto';
@@ -28,6 +31,11 @@ import { UserInfoComponent } from './../components/user-info/user-info.component
 import { UserMenuComponent } from './../components/user-menu/user-menu.component';
 import { UserProfilePage } from './../pages/user-profile/user-profile';
 import { UserService } from './../providers/user.service';
+import { MapPage } from '../pages/map/map';
+
+import { Geolocation } from '@ionic-native/geolocation';
+import { CallNumber } from '@ionic-native/call-number';
+import { SobrePage } from '../pages/sobre/sobre';
 
 const firebaseAppConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyAh6kEb5yhJvktOBJtulIBxdSzxB1tmv_M",
@@ -42,13 +50,18 @@ const firebaseAppConfig: FirebaseAppConfig = {
     CapitalizePipe,
     ChatPage,
     CustomLoggedHeaderComponent,
+    ContatosPage,
     HomePage,
     HistoricoClinicoPage,
     MessageBoxComponent,
     MyApp,
+    MapPage,
     ProgressBarComponent,
+    PrincipalPage,
+    SaibaMaisPage,
     SigninPage,
     SignupPage,
+    SobrePage,
     SinaisInfartoPage,
     UserInfoComponent,
     UserMenuComponent,
@@ -65,13 +78,18 @@ const firebaseAppConfig: FirebaseAppConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     ChatPage,
+    ContatosPage,
     HomePage,
     HistoricoClinicoPage,
     MyApp,
+    PrincipalPage,
+    SaibaMaisPage,
     SigninPage,
     SignupPage,
     SinaisInfartoPage,
-    UserProfilePage
+    SobrePage,
+    UserProfilePage,
+    MapPage
   ],
   providers: [
     AuthService,
@@ -80,7 +98,9 @@ const firebaseAppConfig: FirebaseAppConfig = {
     StatusBar,
     SplashScreen,
     UserService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Geolocation,
+    CallNumber
   ]
 })
 export class AppModule {}

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { AlertController, Loading, LoadingController, NavController, NavParams, TextInput } from 'ionic-angular';
 
 import { AuthService } from './../../providers/auth.service';
-import { HomePage } from './../home/home';
+import { PrincipalPage } from './../principal/principal';
 import { SignupPage } from './../signup/signup';
 
 @Component({
@@ -12,6 +12,7 @@ import { SignupPage } from './../signup/signup';
 })
 export class SigninPage {
 
+  @ViewChild('focusInput') inputEmail: TextInput;
   signinForm: FormGroup;
 
   constructor(
@@ -32,6 +33,14 @@ export class SigninPage {
 
   }
 
+  ionViewDidLoad() {
+
+    setTimeout(() => {
+      this.inputEmail.setFocus();
+    },150); 
+
+  }
+
   onSubmit(): void {
 
     let loading: Loading = this.showLoading();
@@ -40,7 +49,7 @@ export class SigninPage {
       .then((isLogged: boolean) => {
 
         if (isLogged) {
-          this.navCtrl.setRoot(HomePage/*, {usuario : "Cleiton"}*/);
+          this.navCtrl.setRoot(PrincipalPage);
           loading.dismiss();
         }
 

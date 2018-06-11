@@ -1,9 +1,12 @@
+import { SaibaMaisPage } from './../../pages/saiba-mais/saiba-mais';
 import { Component, Input } from '@angular/core';
 import { AlertController, App, MenuController } from 'ionic-angular';
 
 import { AuthService } from './../../providers/auth.service';
 import { BaseComponent } from "../base.component";
 import { HistoricoClinicoPage } from './../../pages/historico-clinico/historico-clinico';
+import { ContatosPage } from './../../pages/contatos/contatos';
+import { HomePage } from './../../pages/home/home';
 import { User } from './../../models/user.model';
 import { UserProfilePage } from './../../pages/user-profile/user-profile';
 import { SinaisInfartoPage } from './../../pages/sinais-infarto/sinais-infarto';
@@ -35,6 +38,18 @@ export class UserMenuComponent extends BaseComponent {
 
   onSinaisInfarto(): void {
     this.navCtrl.push(SinaisInfartoPage);
+  }
+
+  onChat(): void {
+    this.navCtrl.push(HomePage);
+  }
+
+  onContatos(): void {
+    this.navCtrl.push(ContatosPage);
+  }
+
+  onSaibaMais(): void {
+    this.navCtrl.push(SaibaMaisPage);
   }
 
 }

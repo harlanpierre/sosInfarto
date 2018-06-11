@@ -5,7 +5,7 @@ import { AlertController, Loading, LoadingController, NavController, NavParams }
 import 'rxjs/add/operator/first';
 
 import { AuthService } from './../../providers/auth.service';
-import { HomePage } from './../home/home';
+import { PrincipalPage } from './../principal/principal';
 import { UserService } from './../../providers/user.service';
 
 import * as firebase from 'firebase/app';
@@ -62,7 +62,7 @@ export class SignupPage {
             this.userService.create(formUser, uuid)
               .then(() => {
                 console.log('Usuario cadastrado!');
-                this.navCtrl.setRoot(HomePage);
+                this.navCtrl.setRoot(PrincipalPage);
                 loading.dismiss();
               }).catch((error: any) => {
                 console.log(error);

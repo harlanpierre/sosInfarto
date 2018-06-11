@@ -1,3 +1,4 @@
+import { Contato } from './contato.model';
 export class User {
 
     public $key: string;
@@ -28,5 +29,7 @@ export class User {
     public sn_familia_diabetes: boolean = false;
     public sn_familia_cardiaco: boolean = false;
     // ) {}
+
+    public contatos: Array<Contato> = [];
 
 }

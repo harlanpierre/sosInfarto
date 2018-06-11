@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AuthService } from './../providers/auth.service';
+import { PrincipalPage } from './../pages/principal/principal';
 import { HomePage } from './../pages/home/home';
 import { SigninPage } from './../pages/signin/signin';
 import { User } from './../models/user.model';
@@ -34,7 +35,7 @@ export class MyApp {
 
         if (authUser) {
 
-          this.rootPage = HomePage;
+          this.rootPage = PrincipalPage;
 
           userService.currentUser
             .valueChanges()
