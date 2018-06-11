@@ -1,0 +1,44 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Lista de Contatos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+
+    <form (ngSubmit)="editContato(contato)" *ngFor="let contato of contatos">
+      <ion-item>
+        <ion-icon name="person" item-start color="primary"></ion-icon>
+        <ion-label>Nome </ion-label>
+        <ion-input type="text" [(ngModel)]="contato.nome" name="nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="call" item-start color="primary"></ion-icon>
+        <ion-label>Telefone</ion-label>
+        <ion-input type="number" [(ngModel)]="contato.telefone" name="telefone"></ion-input>
+      </ion-item>
+      <div text-center>
+        <button ion-button icon-start color="secondary" (click)="editContato(contato)" [disabled]="contato.telefone.length < 9">
+          <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>
+          Salvar
+        </button>
+        <button ion-button icon-start color="primary" (click)="remove(contato)">
+          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+          <p></p>
+          Remover
+        </button>
+    </div>
+
+      <br>
+    </form>
+ 
+  <br>
+  <button ion-button block (click)="addContato();" [disabled]="contatos.length >= 3">Novo Contato</button>
+
+   
+
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+
+  <custom-logged-header [title]="view | capitalize:true"></custom-logged-header>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item>
+      <h1 text-center>
+        <a (click)='onSinaisInfarto()'>
+          <ion-icon class="principal-icon" name="medkit" color="primary"></ion-icon>
+        </a>
+      </h1>
+      <p style="text-align: center">Identificar sinais de infarto</p>
+    </ion-item>
+
+    <ion-item>
+      <h1 text-center>
+        <a (click)='onUnidadesProxima()'>
+          <ion-icon class="principal-icon" name="search" color="primary"></ion-icon>
+        </a>
+      </h1>
+      <p style="text-align: center">Pesquisar unidade de saúde mais próxima</p>
+    </ion-item>
+
+    <ion-item>
+      <h1 text-center>
+        <a (click)="onAcionarEmergencia()">
+          <ion-icon class="principal-icon" name="call" color="primary"></ion-icon>
+        </a>
+      </h1>
+      <p style="text-align: center">Acionar contatos de emergência</p>
+    </ion-item>
+
+</ion-content>
