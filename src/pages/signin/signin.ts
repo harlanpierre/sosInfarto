@@ -5,6 +5,7 @@ import { AlertController, Loading, LoadingController, NavController, NavParams, 
 import { AuthService } from './../../providers/auth.service';
 import { PrincipalPage } from './../principal/principal';
 import { SignupPage } from './../signup/signup';
+import { RecuperarSenhaPage } from '../recuperar-senha/recuperar-senha';
 
 @Component({
   selector: 'page-signin',
@@ -20,7 +21,7 @@ export class SigninPage {
     public authService: AuthService,
     public formBuilder: FormBuilder,
     public loadingCtrl: LoadingController,
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams
   ) {
 
@@ -33,11 +34,11 @@ export class SigninPage {
 
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
 
     setTimeout(() => {
       this.inputEmail.setFocus();
-    },150); 
+    },150);
 
   }
 
@@ -54,7 +55,6 @@ export class SigninPage {
         }
 
       }).catch((error: any) => {
-        console.log(error);
         loading.dismiss();
         this.showAlert(error);
       });
@@ -63,6 +63,10 @@ export class SigninPage {
 
   onSignup(): void {
     this.navCtrl.push(SignupPage);
+  }
+
+  onRecuperarSenha(): void {
+    this.navCtrl.push(RecuperarSenhaPage);
   }
 
   private showLoading(): Loading {

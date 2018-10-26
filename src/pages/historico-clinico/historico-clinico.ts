@@ -1,12 +1,14 @@
+import { PrincipalPage } from './../principal/principal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { NavController, NavParams, Loading, LoadingController, AlertController } from 'ionic-angular';
-
-import { HomePage } from '../home/home';
+import { NavController, NavParams, Loading, LoadingController, AlertController} from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { AuthService } from './../../providers/auth.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../providers/user.service';
+import { Contato } from '../../models/contato.model';
+import { ContatosPage } from '../contatos/contatos';
 
 @Component({
   selector: 'page-historico-clinico',
@@ -16,6 +18,13 @@ export class HistoricoClinicoPage {
 
   historicoClinicoForm: FormGroup;
   currentUser: User = new User();
+  contatos: Array<Contato> = [];
+  calculo: number;
+  calculoRCQ: number;
+  imc: string;
+  resultadoRCQ: string;
+  resultado: string;
+  calculoRCQCampo: string;
 
   constructor(
     public alertCtrl: AlertController,
@@ -24,49 +33,21 @@ export class HistoricoClinicoPage {
     public userService: UserService,
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public db: AngularFireDatabase
   ) {
     this.historicoClinicoForm = this.formBuilder.group({
-      peso: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3)]],
+      peso: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(5)]],
       altura: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3)]],
-      idade: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(3)]],
-      sexo: ['', [Validators.required]],
-      sn_fuma: [false],
-      sn_bebi: [false],
-      sn_infartou: [false],
-      sn_avc: [false],
-      sn_pressao_alta: [false],
-      sn_diabetes: [false],
-      sn_sedentario: [false],
-      sn_cardiaco: [false],
-      sn_cirurgia_cardiaca: [false],
-      sn_familia_infartou: [false],
-      sn_familia_avc: [false],
-      sn_familia_pressao_alta: [false],
-      sn_familia_diabetes: [false],
-      sn_familia_cardiaco: [false]
+      idade: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3)]],
+      sexo: ['', [Validators.required]]
     });
-    
-    this.currentUser.sn_fuma = false;
-    this.currentUser.sn_bebi = false;
-    this.currentUser.sn_infartou = false;
-    this.currentUser.sn_avc = false;
-    this.currentUser.sn_pressao_alta = false;
-    this.currentUser.sn_diabetes = false;
-    this.currentUser.sn_sedentario = false;
-    this.currentUser.sn_cardiaco = false;
-    this.currentUser.sn_cirurgia_cardiaca = false;
-    this.currentUser.sn_familia_infartou = false;
-    this.currentUser.sn_familia_avc = false;
-    this.currentUser.sn_familia_pressao_alta = false;
-    this.currentUser.sn_familia_diabetes = false;
-    this.currentUser.sn_familia_cardiaco = false;
 
   }
 
   ionViewCanEnter(): Promise<boolean> {
     return this.authService.authenticated;
-    
+
   }
 
   ionViewDidLoad() {
@@ -74,9 +55,47 @@ export class HistoricoClinicoPage {
       .valueChanges()
       .subscribe((user: User) => {
         this.currentUser = user;
+        this.currentUser.escoreHistoria = 0;
+        this.calculaIMC();
+        this.calculoCinturaQuadril();
       });
 
-      console.log(this.currentUser);
+    this.userService
+    .mapObjectKey<User>(this.userService.currentUser)
+    .first()
+    .subscribe((currentUser: User) => {
+      this.db.list(`/users/${currentUser.$key}/contatos`).valueChanges().subscribe((items: Contato[]) => {
+        this.contatos = items;
+      });
+    });
+
+  }
+
+  calculaIMC() {
+    this.calculo = (this.currentUser.peso / Math.pow(this.currentUser.altura, 2))*10000;
+    this.imc = this.calculo.toFixed(2);
+
+    if(this.calculo < 18.5) {
+      this.resultado = "Você está abaixo do peso com esse indice: " + this.imc;
+    } else if(this.calculo >= 18.5 && this.calculo < 24.9) {
+      this.resultado = "Você está com peso ideal com esse indice: " + this.imc;
+    } else if (this.calculo >= 25 && this.calculo < 29.9) {
+      this.resultado = "Você está com sobrepeso com esse indice: " + this.imc;
+    } else if(this.calculo > 30 ) {
+      this.resultado = "Você está com obesidade com esse indice: " + this.imc;
+    }
+  }
+
+  calculoCinturaQuadril() {
+    this.calculoRCQ = (this.currentUser.cintura / this.currentUser.quadril)*100;
+    this.calculoRCQCampo = this.calculoRCQ.toFixed(2);
+    if(this.currentUser.sexo == 'masculino' && this.calculoRCQ >= 94) {
+      this.resultadoRCQ = "SIM";
+    } else if(this.currentUser.sexo == 'feminino' && this.calculoRCQ >= 80) {
+      this.resultadoRCQ = "SIM";
+    } else {
+      this.resultadoRCQ = "NÃO";
+    }
   }
 
   onSubmit(event: Event): void {
@@ -86,20 +105,50 @@ export class HistoricoClinicoPage {
   }
 
   private editUser(): void {
-    let loading: Loading = this.showLoading();
-    let formUser = this.historicoClinicoForm.value;
-    this.userService
-      .editHistorico({
-        sexo: formUser.sexo, peso: formUser.peso, altura: formUser.altura, idade: formUser.idade,
-        sn_fuma: formUser.sn_fuma, sn_bebi: formUser.sn_bebi, sn_infartou: formUser.sn_infartou,
-        sn_avc: formUser.sn_avc, sn_pressao_alta: formUser.sn_pressao_alta, sn_diabetes: formUser.sn_diabetes,
-        sn_sedentario: formUser.sn_sedentario, sn_cardiaco: formUser.sn_cardiaco, sn_cirurgia_cardiaca: formUser.sn_cirurgia_cardiaca,
-        sn_familia_infartou: formUser.sn_familia_infartou, sn_familia_avc: formUser.sn_familia_avc, sn_familia_pressao_alta: formUser.sn_familia_pressao_alta,
-        sn_familia_diabetes: formUser.sn_familia_diabetes, sn_familia_cardiaco: formUser.sn_familia_cardiaco
-      }).then(() => {
-          this.navCtrl.setRoot(HomePage);
+    if(this.currentUser.sn_hipertensao && this.currentUser.sn_diabetes && this.currentUser.sn_tabagismo) {
+      this.currentUser.escoreHistoria = 0;
+      this.currentUser.escoreHistoria += 1;
+
+    }
+
+    if(this.currentUser.sn_hipertensao && this.currentUser.sn_diabetes && this.currentUser.sn_tabagismo &&
+              ((this.currentUser.sexo == 'feminino' && this.calculoRCQ >= 80) || (this.currentUser.sexo == 'masculino' && this.calculoRCQ >= 94))) {
+                this.currentUser.escoreHistoria = 0;
+                this.currentUser.escoreHistoria += 2;
+
+    }
+
+    if(this.currentUser.sn_hipertensao && this.currentUser.sn_diabetes && this.currentUser.sn_tabagismo &&
+      ((this.currentUser.sexo == 'feminino' && this.calculoRCQ >= 80) || (this.currentUser.sexo == 'masculino' && this.calculoRCQ >= 94))
+       && this.currentUser.sn_frutas) {
+        this.currentUser.escoreHistoria = 0;
+        this.currentUser.escoreHistoria += 3;
+    }
+
+    if(!this.currentUser.sn_frutas && !this.currentUser.sn_atividade_fisica) {
+      this.currentUser.escoreHistoria += 2;
+    }
+
+    if(this.currentUser.idade < 60) {
+      this.currentUser.escoreHistoria += 1;
+    } else if(this.currentUser.idade >= 60) {
+      this.currentUser.escoreHistoria += 2;
+    }
+
+    if(this.currentUser.sn_infartou) {
+      this.currentUser.escoreHistoria += 2;
+    }
+
+    if(this.contatos.length == 0) {
+      this.alertaContatos();
+    } else {
+      let loading: Loading = this.showLoading();
+      this.userService
+      .editHistorico(this.currentUser).then(() => {
+          this.navCtrl.setRoot(PrincipalPage);
           loading.dismiss();
         });
+    }
   }
 
   private showLoading(): Loading {
@@ -112,10 +161,35 @@ export class HistoricoClinicoPage {
     return loading;
   }
 
-  private showAlert(message: string): void {
+  alertaContatos(): void {
     this.alertCtrl.create({
-      message: message,
-      buttons: ['Ok']
+        title: 'Atenção',
+        message: 'Identificamos que você não tem nenhum contato de emergência/medico assistente cadastrado, deseja cadastrar agora?',
+        buttons: [
+            {
+                text: 'Sim',
+                handler: () => {
+                  let loading: Loading = this.showLoading();
+                  this.userService
+                  .editHistorico(this.currentUser).then(() => {
+                    this.navCtrl.setRoot(ContatosPage);
+                    loading.dismiss();
+                  });
+
+                }
+            },
+            {
+              text: 'Não',
+              handler: () => {
+                let loading: Loading = this.showLoading();
+                this.userService
+                .editHistorico(this.currentUser).then(() => {
+                  this.navCtrl.setRoot(PrincipalPage);
+                  loading.dismiss();
+                });
+              }
+            }
+        ]
     }).present();
   }
 

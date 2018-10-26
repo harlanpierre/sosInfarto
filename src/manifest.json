@@ -4,9 +4,9 @@
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
-    "src": "assets/images/logo.png",
+    "src": "assets/images/logo-inicial.jpg",
     "sizes": "238x238",
-    "type": "image/png"
+    "type": "image/jpg"
   }],
   "background_color": "#009966",
   "theme_color": "#009966"

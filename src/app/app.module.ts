@@ -1,3 +1,5 @@
+import { AlterarSenhaPage } from './../pages/alterar-senha/alterar-senha';
+import { PrevencaoPage } from './../pages/prevencao/prevencao';
 import { SaibaMaisPage } from './../pages/saiba-mais/saiba-mais';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,7 +37,9 @@ import { MapPage } from '../pages/map/map';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { CallNumber } from '@ionic-native/call-number';
+import { IonMaskModule } from '@pluritech/ion-mask';
 import { SobrePage } from '../pages/sobre/sobre';
+import { RecuperarSenhaPage } from '../pages/recuperar-senha/recuperar-senha';
 
 const firebaseAppConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyAh6kEb5yhJvktOBJtulIBxdSzxB1tmv_M",
@@ -47,6 +51,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
 
 @NgModule({
   declarations: [
+    AlterarSenhaPage,
     CapitalizePipe,
     ChatPage,
     CustomLoggedHeaderComponent,
@@ -63,6 +68,8 @@ const firebaseAppConfig: FirebaseAppConfig = {
     SignupPage,
     SobrePage,
     SinaisInfartoPage,
+    RecuperarSenhaPage,
+    PrevencaoPage,
     UserInfoComponent,
     UserMenuComponent,
     UserProfilePage
@@ -73,10 +80,12 @@ const firebaseAppConfig: FirebaseAppConfig = {
     AngularFireDatabaseModule,
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonMaskModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    AlterarSenhaPage,
     ChatPage,
     ContatosPage,
     HomePage,
@@ -88,7 +97,9 @@ const firebaseAppConfig: FirebaseAppConfig = {
     SignupPage,
     SinaisInfartoPage,
     SobrePage,
+    PrevencaoPage,
     UserProfilePage,
+    RecuperarSenhaPage,
     MapPage
   ],
   providers: [

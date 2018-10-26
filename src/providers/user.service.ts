@@ -3,11 +3,10 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators/map';
 
 import { FirebaseApp } from "angularfire2";
 import { AngularFireAuth } from "angularfire2/auth";
-import { AngularFireDatabase, AngularFireObject, AngularFireList } from "angularfire2/database";
+import { AngularFireDatabase, AngularFireObject } from "angularfire2/database";
 
 import { BaseService } from "./base.service";
 import { User } from './../models/user.model';
@@ -57,19 +56,16 @@ export class UserService extends BaseService {
   }
 
   create(user: User, uuid: string): Promise<void> {
-    this.user.name = user.name;
+   /* this.user.name = user.name;
     this.user.username = user.username;
     this.user.email = user.email;
     this.user.contatos.push({
       "id": "1",
       "nome": "Exemplo",
       "telefone": "999999999"
-    });
-
-    debugger
-    
+    });*/
     return this.db.object(`/users/${uuid}`)
-      .set(this.user)
+      .set(user)
       .catch(this.handlePromiseError);
   }
 
@@ -79,15 +75,8 @@ export class UserService extends BaseService {
       .catch(this.handlePromiseError);
   }
 
-  editHistorico(user: {
-    sexo: string, peso: string, altura: string, idade: string,
-    sn_fuma: boolean, sn_bebi: boolean, sn_infartou: boolean,
-    sn_avc: boolean, sn_pressao_alta: boolean, sn_diabetes: boolean,
-    sn_sedentario: boolean, sn_cardiaco: boolean, sn_cirurgia_cardiaca: boolean,
-    sn_familia_infartou: boolean, sn_familia_avc: boolean, sn_familia_pressao_alta: boolean,
-    sn_familia_diabetes: boolean, sn_familia_cardiaco: boolean
-  }): Promise<void> {
-    
+  editHistorico(user: User): Promise<void> {
+
     return this.currentUser
       .update(user)
       .catch(this.handlePromiseError);
@@ -102,7 +91,18 @@ export class UserService extends BaseService {
 
   userExists(username: string): Observable<boolean> {
     return this.db.list(`/users`,
-      (ref: firebase.database.Reference) => ref.orderByChild('name').equalTo(username)
+      (ref: firebase.database.Reference) => ref.orderByChild('username').equalTo(username)
+    )
+      .valueChanges()
+      .map((users: User[]) => {
+        return users.length > 0;
+      }).catch(this.handleObservableError);
+  }
+
+  emailExists(email: string): Observable<boolean> {
+    debugger
+    return this.db.list(`/users`,
+      (ref: firebase.database.Reference) => ref.orderByChild('email').equalTo(email)
     )
       .valueChanges()
       .map((users: User[]) => {

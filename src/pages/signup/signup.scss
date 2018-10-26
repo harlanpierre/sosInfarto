@@ -2,4 +2,56 @@ page-signup {
     .auth-icon {
         font-size: 7.0em;
     }
+    .nada{
+      border-radius: 50px;
+    }
+    .email {
+      content: url(../../assets/icon/icone_email.png);
+      border-radius: 40px;
+      width: 20px;
+      height: 20px;
+    }
+    .senha {
+      content: url(../../assets/icon/icone_senha.png);
+      border-radius: 30px;
+      width: 20px;
+      height: 20px;
+    }
+
+    .username {
+      content: url(../../assets/icon/icone_apelido.png);
+      border-radius: 30px;
+      width: 20px;
+      height: 20px;
+
+    }
+
+    .inputemail {
+      border-radius: 40px;
+      background-color: #5ea6e3;
+    }
+    .inputsenha {
+      border-radius: 40px;
+      background-color: #5ea6e3;
+    }
+
+    .inputusername{
+      border-radius: 40px;
+      background-color: #5ea6e3;
+    }
+    .inputnome{
+      border-radius: 40px;
+      background-color: #4682b4;
+    }
+    .boxbuton{
+      border-radius: 40px;
+    }
+    .arredondar{
+      border-radius: 30px;
+      background-color: #6495ED;
+    }
+    .text-input::-webkit-input-placeholder {
+      color: white;
+    }
+
 }

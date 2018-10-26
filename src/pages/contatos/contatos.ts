@@ -1,10 +1,9 @@
 import { PrincipalPage } from './../principal/principal';
 import { Component } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { IonicPage, NavController, NavParams, ViewController, ModalController, Loading, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Loading, LoadingController, AlertController } from 'ionic-angular';
+import { CallNumber } from '@ionic-native/call-number';
 
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import * as firebase from 'firebase/app';
+import { AngularFireDatabase} from 'angularfire2/database';
 
 import { AuthService } from './../../providers/auth.service';
 import { User } from './../../models/user.model';
@@ -22,29 +21,23 @@ export class ContatosPage {
   currentUser: User = new User();
   contatos: Array<Contato> = [];
   canEdit: boolean = false;
-  contatosForm: FormGroup;
 
   constructor(
-    public navCtrl: NavController, 
+    public alertCtrl: AlertController,
+    public navCtrl: NavController,
     public navParams: NavParams,
     public db: AngularFireDatabase,
     public viewCtl: ViewController,
-    public formBuilder: FormBuilder,
-    public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
     public authService: AuthService,
-    public userService: UserService) {
-
-      this.contatosForm = this.formBuilder.group({
-        name: ['', [Validators.required, Validators.minLength(3)]],
-        telefone: ['', [Validators.required, Validators.minLength(8)]]
-      });
+    public userService: UserService,
+    public callNumber: CallNumber) {
 
   }
 
   ionViewCanEnter(): Promise<boolean> {
     return this.authService.authenticated;
-    
+
   }
 
   ionViewDidLoad() {
@@ -53,14 +46,13 @@ export class ContatosPage {
       .subscribe((user: User) => {
         this.currentUser = user;
       });
-      
+
       this.userService
       .mapObjectKey<User>(this.userService.currentUser)
       .first()
       .subscribe((currentUser: User) => {
         this.db.list(`/users/${currentUser.$key}/contatos`).valueChanges().subscribe((items: Contato[]) => {
           this.contatos = items;
-          console.log(this.contatos +''+items);
         });
       });
   }
@@ -71,13 +63,17 @@ export class ContatosPage {
   }
 
   private editContato(contato) {
-    let loading: Loading = this.showLoading();
-    this.userService
-      .editContato(this.contatos)
-      .then(() => {
-          this.navCtrl.setRoot(PrincipalPage);
-          loading.dismiss();
-        });
+    if(contato.telefone.length < 11) {
+      this.showAlert('Numero de caracteres para o telefone está invalido.');
+    } else {
+      let loading: Loading = this.showLoading();
+      this.userService
+        .editContato(this.contatos)
+        .then(() => {
+           this.navCtrl.setRoot(PrincipalPage);
+            loading.dismiss();
+          });
+      }
   }
 
   private showLoading(): Loading {
@@ -107,7 +103,7 @@ export class ContatosPage {
   remove(contato) {
     let index = this.findContatoIndex(contato.id);
     this.contatos.splice(index, 1);
-    
+
     let loading: Loading = this.showLoading();
     this.userService
       .editContato(this.contatos)
@@ -117,12 +113,28 @@ export class ContatosPage {
         });
   }
 
+  ligar(contato) {
+    if(contato.telefone.length < 11) {
+      this.showAlert('Numero de caracteres para o telefone está invalido.');
+    } else {
+      this.callNumber.callNumber(contato.telefone, true)
+        .then(res => console.log('Efetuando chamada.', res))
+        .catch(err => console.log('Erro ao efetuar chamada.', err));
+    }
+  }
+
   addContato() {
     let id = this.contatos.length+1;
     this.contatos.push({"id": ''+id,
           "nome": "",
          "telefone": ""});
-         debugger
+  }
+
+  private showAlert(message: string): void {
+    this.alertCtrl.create({
+      message: message,
+      buttons: ['Ok']
+    }).present();
   }
 
 }

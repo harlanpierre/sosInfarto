@@ -1,5 +1,35 @@
 page-principal {
-    .principal-icon {
-        font-size: 5.0em;
-    }
+  .principal-icon {
+    font-size: 5em;
+  }
+  .sinaldeinfarto {
+    content: url(../../assets/icon/bot_infarto.png);
+    border-radius: 40px;
+    width: 100px;
+    height: 100px;
+  }
+  .unidadedesaude {
+    content: url(../../assets/icon/bot_localizador.png);
+    border-radius: 40px;
+    width: 100px;
+    height: 100px;
+  }
+  .ligarparaemergencia {
+    content: url(../../assets/icon/bot_fone.png);
+    border-radius: 40px;
+    width: 100px;
+    height: 100px;
+  }
+  .cabecario {
+    content: url(../../assets/images/logo_app_horizontal.png);
+    width: 50px;
+    height: 10px;
+  }
+  .arredondar {
+    border-radius: 40px;
+  }
+  
+  .arredondar{
+    border-radius: 30px;
+  }
 }

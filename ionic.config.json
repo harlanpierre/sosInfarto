@@ -1,8 +1,8 @@
 {
   "name": "SosInfarto",
-  "app_id": "f36da34f",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular",
+  "pro_id": "f36da34f"
 }

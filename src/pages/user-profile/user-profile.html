@@ -7,46 +7,46 @@
 
 <ion-content padding>
 
-  <user-info [user]="currentUser"></user-info>
 
-  <button ion-button block (click)="canEdit = !canEdit">Editar</button>
 
-  <form (ngSubmit)="onSubmit($event)" *ngIf="canEdit" #profileForm="ngForm">
 
-    <ion-item>
-      <ion-icon name="person" item-start></ion-icon>
-      <ion-input
-        type="text"
-        placeholder="Nome"
-        name="name"
-        [(ngModel)]="currentUser.name"
-        required
-        minlenght="3">
-      </ion-input>
-    </ion-item>
+    <user-info [user]="currentUser" ></user-info>
 
-    <ion-item>
-      <ion-icon name="at" item-start></ion-icon>
-      <ion-input
-        type="text"
-        placeholder="Username"
-        name="username"
-        [(ngModel)]="currentUser.username"
-        required
-        minlenght="3">
-      </ion-input>
-    </ion-item>
+    <button ion-button block (click)="canEdit = !canEdit" class="boxbotao">Editar</button>
 
-    <ion-item>
-      <ion-icon name="image" item-start></ion-icon>
-      <input type="file" accept="image/*" (change)="onPhoto($event)">
-    </ion-item>
+    <form (ngSubmit)="onSubmit($event)" *ngIf="canEdit" #profileForm="ngForm">
+<br>
+      <ion-item class="boxbotao">
+        <img [src]="'assets/icon/icone_nome.png'" item-start style=" border-radius: 30px;
+      width: 36px;
+      height: 36px;" />
+        <ion-input type="text" placeholder="Nome" name="name" [(ngModel)]="currentUser.name" required minlenght="3">
+        </ion-input>
+      </ion-item>
+<br>
+      <ion-item class="boxbotao">
+        <img [src]="'assets/icon/icone_apelido.png'" item-start style=" border-radius: 30px;
+        width: 36px;
+        height: 36px;" />
+        <ion-input type="text" placeholder="Username" name="username" [(ngModel)]="currentUser.username" required
+          minlenght="3">
+        </ion-input>
+      </ion-item>
+<br>
+      <ion-item class="boxbotao">
+        <img [src]="'assets/icon/icone_img.png'" item-start style=" border-radius: 30px;
+      width: 36px;
+      height: 36px;" />
+        <input type="file" accept="image/*" (change)="onPhoto($event)">
+      </ion-item>
 
-    <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>
+      <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>
 
-    <br>
-    <button ion-button block type="submit" [disabled]="profileForm.form.invalid">Salvar</button>
+      <br>
+      <button ion-button block type="submit" [disabled]="profileForm.form.invalid" class="boxbotao">Salvar</button>
 
-  </form>
+    </form>
+  
+
 
 </ion-content>

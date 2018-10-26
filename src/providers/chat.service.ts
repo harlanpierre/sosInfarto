@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { map } from 'rxjs/operators/map';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, AngularFireList, AngularFireObject, AngularFireAction, DatabaseSnapshot } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 
 import { BaseService } from "./base.service";
 import { Chat } from './../models/chat.model';
 
 import * as firebase from 'firebase/app';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ChatService extends BaseService {
@@ -30,7 +28,7 @@ export class ChatService extends BaseService {
       .subscribe((authUser: firebase.User) => {
         if (authUser) {
 
-          this.chats = this.db.list<Chat>(`/chats/${authUser.uid}`, 
+          this.chats = this.db.list<Chat>(`/chats/${authUser.uid}`,
             (ref: firebase.database.Reference) => ref.orderByChild('timestamp')
           );
 

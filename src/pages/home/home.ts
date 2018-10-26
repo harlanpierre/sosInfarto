@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
 import { MenuController, NavController } from 'ionic-angular';
-
-import { AngularFireList } from 'angularfire2/database';
-
 import { AuthService } from './../../providers/auth.service';
 import { Chat } from './../../models/chat.model';
 import { ChatPage } from './../chat/chat';
@@ -62,7 +58,7 @@ export class HomePage {
           this.chats = this.chats
             .map((chats: Chat[]) => chats.filter((chat: Chat) => (chat.title && chat.title.toLowerCase().indexOf(searchTerm.toLocaleLowerCase()) > -1)));
           break;
-          
+
         case 'users':
           this.users = this.users
             .map((users: User[]) => users.filter((user: User) => (user.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1)));
@@ -71,7 +67,7 @@ export class HomePage {
       }
 
     }
-    
+
   }
 
   onChatCreate(recipientUser: User): void {
@@ -84,9 +80,9 @@ export class HomePage {
         this.chatService
           .mapObjectKey<Chat>(this.chatService.getDeepChat(currentUser.$key, recipientUser.$key))
           .first()
-          .subscribe((chat: Chat) => {            
+          .subscribe((chat: Chat) => {
 
-            if (!chat.title) {              
+            if (!chat.title) {
 
               let timestamp: Object = firebase.database.ServerValue.TIMESTAMP;
 
@@ -109,13 +105,13 @@ export class HomePage {
 
   onChatOpen(chat: Chat): void {
 
-    let recipientUserId: string = chat.$key;    
+    let recipientUserId: string = chat.$key;
 
     this.userService.mapObjectKey<User>(
       this.userService.get(recipientUserId)
     )
       .first()
-      .subscribe((user: User) => {        
+      .subscribe((user: User) => {
 
         this.navCtrl.push(ChatPage, {
           recipientUser: user

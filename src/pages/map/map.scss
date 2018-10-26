@@ -1,5 +1,18 @@
 page-map {
     #map {
         height: 100%;
+        height: 50%;
+
     }
+    .body{
+      height: 93%;
+    }
+    .localizar {
+      content: url(../../assets/icon/icone_localiza.png);
+      border-radius: 35px;
+      width: 30px;
+      height: 20px;
+    }
+    
+
 }

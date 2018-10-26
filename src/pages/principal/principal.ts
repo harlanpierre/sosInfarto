@@ -21,7 +21,7 @@ export class PrincipalPage {
 
   constructor(
     public alertCtrl: AlertController,
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public authService: AuthService,
     public userService: UserService,
@@ -42,7 +42,7 @@ export class PrincipalPage {
         this.currentUser = user;
       });
 
-      this.menuCtrl.enable(true, 'user-menu');  
+      this.menuCtrl.enable(true, 'user-menu');
   }
 
   onSinaisInfarto(): void {
@@ -57,13 +57,6 @@ export class PrincipalPage {
     this.callNumber.callNumber("192", true)
       .then(res => console.log('Efetuando chamada.', res))
       .catch(err => console.log('Erro ao efetuar chamada.', err));
-  }
-
-  private showAlert(message: string): void {
-    this.alertCtrl.create({
-      message: message,
-      buttons: ['Ok']
-    }).present();
   }
 
 }

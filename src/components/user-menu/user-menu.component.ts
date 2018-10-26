@@ -10,6 +10,7 @@ import { HomePage } from './../../pages/home/home';
 import { User } from './../../models/user.model';
 import { UserProfilePage } from './../../pages/user-profile/user-profile';
 import { SinaisInfartoPage } from './../../pages/sinais-infarto/sinais-infarto';
+import { SobrePage } from '../../pages/sobre/sobre';
 
 @Component({
   selector: 'user-menu',
@@ -50,6 +51,10 @@ export class UserMenuComponent extends BaseComponent {
 
   onSaibaMais(): void {
     this.navCtrl.push(SaibaMaisPage);
+  }
+
+  onSobre(): void {
+    this.navCtrl.push(SobrePage);
   }
 
 }

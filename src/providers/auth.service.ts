@@ -32,6 +32,11 @@ export class AuthService extends BaseService {
       }).catch(this.handlePromiseError);
   }
 
+  confirmPasswordReset(email: string): Promise<boolean> {
+    return this.afAuth.auth.sendPasswordResetEmail(email)
+      .catch(this.handlePromiseError);
+  }
+
   logout(): Promise<any> {
     return this.afAuth.auth.signOut();
   }
