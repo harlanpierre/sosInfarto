@@ -7,8 +7,9 @@
 
 
 <ion-content padding>
-  <ion-item class="arredondar">
 
+  <div class="wrapper-content">
+    
     <h1 text-center>
       <img [src]="'assets/icon/foto.png'" style="width:90px; height:90px;  border-radius: 90px; margin: 10px;" />
     </h1>
@@ -23,23 +24,26 @@
       </ion-item>
       <br>
       <ion-item class="inputusername">
-        <img  [src]="'assets/icon/icone_apelido.png'" style=" border-radius: 30px;
+        <img [src]="'assets/icon/icone_apelido.png'" style=" border-radius: 30px;
         width: 20px;
-        height: 20px;" item-start/>
+        height: 20px;"
+          item-start />
         <ion-input type="text" placeholder="Username" formControlName="username"></ion-input>
       </ion-item>
       <br>
       <ion-item class="inputemail">
-        <img  [src]="'assets/icon/icone_email.png'" style=" border-radius: 30px;
+        <img [src]="'assets/icon/icone_email.png'" style=" border-radius: 30px;
         width: 20px;
-        height: 20px;" item-start/>
+        height: 20px;"
+          item-start />
         <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
       </ion-item>
       <br>
       <ion-item class="inputsenha">
-        <img  [src]="'assets/icon/icone_senha.png'" style=" border-radius: 30px;
+        <img [src]="'assets/icon/icone_senha.png'" style=" border-radius: 30px;
         width: 20px;
-        height: 20px;" item-start/>
+        height: 20px;"
+          item-start />
         <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
       </ion-item>
 
@@ -47,6 +51,6 @@
       <button ion-button full type="submit" [disabled]="signupForm.invalid" class="boxbuton">Criar Conta</button>
 
     </form>
-  </ion-item>
+  </div>
 
 </ion-content>

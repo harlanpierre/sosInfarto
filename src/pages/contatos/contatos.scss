@@ -1,38 +1,25 @@
 page-contatos {
-  .nome {
-    content: url(../../assets/icon/icone_nome.png);
-    border-radius: 90px;
-    width: 20px;
-    height: 20px;
-  }
-
-  .call {
-    content: url(../../assets/icon/icone_fone.png);
-    border-radius: 40px;
-    width: 10px;
-    height: 10px;
-  }
-  .salvar {
-    content: url(../../assets/icon/icone_salvar.png);
-    border-radius: 40px;
-    width: 20px;
-    height: 20px;
-  }
-
-  .lixeira {
-    content: url(../../assets/icon/icone_lixeira.png);
-    border-radius: 90px;
-    width: 25px;
-    height: 25px;
+  .arredondar{
+    border-radius: 10px;
+    background-color: #6495ED;
   }
   .inputnome {
-    border-radius: 40px;
+    border-radius: 20px;
+    background-color: #5ea6e3;
   }
   .inputnumero {
-    border-radius: 40px;
+    border-radius: 20px;
+    background-color: #5ea6e3;
+  }
+  .inputnumero1 {
+    border-radius: 10px;
+    background-color: #5ea6e3;
+    margin-top: 25px;
+
   }
   .boxbotao {
     border-radius: 40px;
+    width:99px;
   }
   .boxbotao1 {
     border-radius: 40px;
@@ -40,6 +27,6 @@ page-contatos {
   }
   .boxbotao2 {
     border-radius: 40px;
-    width:98px;
+    width:90px;
   }
 }

@@ -1,45 +1,44 @@
- <ion-header>
-  <custom-logged-header [title]="view | capitalize:true" ></custom-logged-header>
+<ion-header>
+  <custom-logged-header [title]="view | capitalize:true"></custom-logged-header>
 
 </ion-header>
 
 
 <ion-content padding>
 
-  <ion-item class="arredondar">
+  <div class="arredondar">
 
-
-    <ion-item>
-      <h1 text-center>
-        <a (click)='onSinaisInfarto()'>
-          <img [src]="'assets/icon/bot_infarto.png'" item-start style=" border-radius: 40px;
+    <h1 text-center>
+      <a (click)='onSinaisInfarto()'>
+        <img [src]="'assets/icon/bot_infarto.png'" item-start style=" border-radius: 10px;
           width: 100px;
           height: 100px;" />
-        </a>
-      </h1>
-      <p style="text-align: center">Identificar sinais de infarto</p>
-    </ion-item>
+      </a>
+    </h1>
+    <p style="text-align: center">Identificar sinais de infarto</p>
 
-    <ion-item>
-      <h1 text-center>
-        <a (click)='onUnidadesProxima()'>
-          <img [src]="'assets/icon/bot_localizador.png'" item-start style=" border-radius: 40px;
+
+    <h1 text-center>
+      <a (click)='onUnidadesProxima()'>
+        <img [src]="'assets/icon/bot_localizador.png'" item-start style=" border-radius: 10px;
           width: 100px;
           height: 100px;" />
-        </a>
-      </h1>
-      <p style="text-align: center">Localizar Unidade de Saúde</p>
-    </ion-item>
+      </a>
+    </h1>
+    <p style="text-align: center">Localizar Unidade de Saúde</p>
 
-    <ion-item>
-      <h1 text-center>
-        <a (click)="onAcionarEmergencia()">
-          <img [src]="'assets/icon/bot_fone.png'" item-start style=" border-radius: 40px;
+
+
+    <h1 text-center>
+      <a (click)="onAcionarEmergencia()">
+        <img [src]="'assets/icon/bot_fone.png'" item-start style=" border-radius: 10px;
           width: 100px;
           height: 100px;" />
-        </a>
-      </h1>
-      <p style="text-align: center">Ligar para emergência</p>
-    </ion-item>
-  </ion-item>
+      </a>
+    </h1>
+    <p style="text-align: center">Ligar para emergência</p>
+
+  </div>
+
+
 </ion-content>

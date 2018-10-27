@@ -8,7 +8,7 @@ page-recuperar-senha {
     border-radius: 40px;
   }
   .inputemail{
-    border-radius: 40px;
+    border-radius: 10px;
     background-color: #5ea6e3;
   }
   .nada{
@@ -16,7 +16,8 @@ page-recuperar-senha {
   }
   .arredondar{
     border-radius: 30px;
-    opacity: 0.9;
+    background-color: #6495ED;
+    padding: 10pt;
   }
   .text-input::-webkit-input-placeholder {
     color: white;

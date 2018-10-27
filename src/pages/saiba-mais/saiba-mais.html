@@ -5,42 +5,45 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>O Infarto</h1>
-  <p align='justify'> Ocorre quando uma ou mais artérias que levam oxigênio ao coração (chamadas artérias coronárias) são obstruídas abruptamente
-    por um coágulo de sangue formado em cima de uma placa de gordura (ateroma) existente na parede interna da artéria.
-  </p>
-  <h1>A Presença</h1>
-  <p align='justify'> De placas de gordura no sangue é chamada deaterosclerose (placa de colesterol). O paciente que possui placas de aterosclerose
-    com algum grau de obstrução na luz de uma artéria tem a chamada DAC – doença arterial coronariana. Conforme a placa de
-    gordura (ateroma) cresce, ela leva à obstrução cada vez maior da coronária e pode levar ao sintoma de dor no peito aos
-    esforços (angina). Em geral, uma pessoa tem sintoma de dor no peito aos esforços quando a obstrução é maior que 70%.</p>
-  <p align='justify'>Antigamente acreditava-se que o infarto agudo do miocárdio ocorria quando estas placas cresciam progressivamente até fechar
-    completamente o vaso. Hoje sabemos que não é isso que ocorre. O fechamento do vaso ocorre devido a uma ruptura na parede
-    da placa de gordura, levando à formação de um coágulo que obstrui abruptamente a artéria e ocasiona o infarto agudo do
-    miocárdio.
-  </p>
-  <p align='justify'>Outra descoberta importante foi que esta ruptura, formação de coágulo e fechamento do vaso pode ocorrer em placas de aterosclerose
-    pequenas que causavam 20% a 30% de obstrução e, por isso, eram assintomáticas.</p>
+<div class="wrapper-content">
 
-  <p align='justify'>Então, é possível que alguém que não sinta nada em caminhadas ou até em corridas possa sofrer um infarto agudo do miocárdio?
-    A resposta é sim! Cerca de 50% a 60% dos infartos ocorrem em pessoas previamente assintomáticas. Por conta disso, o check-up
-    é tão importante.</p>
+  <h1 text-center>
+    <a (click)='showAlert()'>
+      <img [src]="'assets/icon/bot1.png'" item-start style=" border-radius: 55px;
+                width: 150px;
+                height: 150px;" />
+    </a>
+  </h1>
+  <p style="text-align: center;">O Infarto</p>
 
-  <h1>Causa Incomum de Infarto </h1>
-  <p align='justify'> São espasmos de uma artéria coronária, que podem ser capazes de interromper o fluxo de sangue a uma parte do músculo cardíaco.
-    Drogas, como a cocaína, podem causar tal espasmo. Um ataque cardíaco também pode ocorrer devido a uma ruptura na artéria
-    do coração, ou coágulos que viajaram de outras partes do corpo pelo sangue. Infarto também pode ocorrer se o fluxo sanguíneo
-    para o coração é severamente diminuído, em situações como a pressão arterial muito baixa (choque).</p>
+  <h1 text-center>
+    <a (click)='showAlert2()'>
+      <img [src]="'assets/icon/bot2.png'" item-start style=" border-radius: 55px;
+                  width: 150px;
+                  height: 150px;" />
+    </a>
+  </h1>
+  <p style="text-align: center;">A Presença</p>
 
-  <br>
-  <div text-center>
-    <p>Para mais informações sobre sobre prevenções</p>
-    <button ion-button icon-end color="secondary" (click)="onPrevencao()" class="arredondar">
-      Clique aqui
-      <ion-icon name="arrow-forward"></ion-icon>
-    </button>
-  </div>
+  <h1 text-center>
+    <a (click)='showAlert3()'>
+      <img [src]="'assets/icon/bot3.png'" item-start style=" border-radius: 55px;
+                    width: 150px;
+                    height: 150px;" />
+    </a>
+  </h1>
+  <p style="text-align: center;">Causa Incomum de Infarto</p>
+
+  <h1 text-center>
+    <a (click)='onPrevencao()'>
+      <img [src]="'assets/icon/bot+.png'" item-start style=" border-radius: 55px;
+                      width: 150px;
+                      height: 150px;" />
+    </a>
+  </h1>
+  <p style="text-align: center;">Para mais informações sobre sobre prevenções</p>
 
 
+</div>
 
 </ion-content>
