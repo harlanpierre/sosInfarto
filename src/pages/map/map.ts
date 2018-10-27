@@ -54,7 +54,8 @@ export class MapPage {
       const position = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
       console.log(position)
      const mapOptions = {
-        zoom: 14,
+        disableDefaultUI: true,
+        zoom: 16,
         center: position
       }
 

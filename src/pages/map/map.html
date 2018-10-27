@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar color="primary" >
-    <ion-title color="white" >Pesquisar unidade de saúde </ion-title>
+    <img [src]="'assets/icon/icone_logo.png'" />
+    <ion-title class="ion-title" color="white" >Unidade de Saúde </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -8,11 +9,13 @@
 <div class="body">
   <div #map id="map"></div>
 
-  <ion-scroll scrollX="false" scrollY="true" style="width :100% ;height:60%">
+  <ion-scroll scrollX="false" scrollY="true" style="width :110%;height:66%; top: -14px;right: 16px; opacity: 0.8;">
 
     <ion-list>
-      <ion-item *ngFor="let hospital of hospitais" (click)="calculateRoute(hospital.geometry.location)">
-        {{hospital.name}}
+      <ion-item *ngFor="let hospital of hospitais" (click)="calculateRoute(hospital.geometry.location)" 
+                style="font-size: 1.1rem">
+        {{hospital.name}} <br>
+        {{hospital.vicinity}}
         <img [src]="'assets/icon/icone_localiza.png'" item-start style=" border-radius: 36px;
         width: 36px;
         height: 36px;" />
