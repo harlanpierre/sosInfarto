@@ -81,10 +81,12 @@ export class MapPage {
     //Pegando localização dos hospitais nos 5 quilometros mais proximos do usuario.
     let service = new google.maps.places.PlacesService(this.map);
     return new Promise((resolve,reject)=>{
-    service.nearbySearch({
+    //service.nearbySearch({
+    service.textSearch({  
       location: this.startPosition,
-      radius: 5000,
-      type: ['hospital']
+      //radius: 5000,
+      //type: ['hospital']
+      query: ['hospitais e UPAs de referencia em cardiologia']
     }, function (results, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         console.log(results)
