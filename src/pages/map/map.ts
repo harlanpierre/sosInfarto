@@ -67,7 +67,6 @@ export class MapPage {
         map: this.map,
         title: this.currentUser.name
       });
-
       google.maps.event.addListener(marker, "click", () => {
         let infowindow = new google.maps.InfoWindow();
         infowindow.setContent(marker.getTitle());
@@ -75,18 +74,18 @@ export class MapPage {
       });*/
 
     this.startPosition = position;
-    let mapAux = this.map;
-    let local = this.startPosition;
+    //let mapAux = this.map;
+    //let local = this.startPosition;
 
     //Pegando localização dos hospitais nos 5 quilometros mais proximos do usuario.
     let service = new google.maps.places.PlacesService(this.map);
     return new Promise((resolve,reject)=>{
     //service.nearbySearch({
-    service.textSearch({  
+    service.textSearch({
       location: this.startPosition,
       //radius: 5000,
       //type: ['hospital']
-      query: ['hospitais e UPAs de referencia em cardiologia']
+      query: ['hospitais e UPA de referência em cardiologia']
     }, function (results, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         console.log(results)
@@ -112,7 +111,6 @@ export class MapPage {
               let directionsDisplay = new google.maps.DirectionsRenderer();
               let directionsService = new google.maps.DirectionsService();
               directionsDisplay.setMap(mapAux);
-
               directionsService.route(request, function (result, status) {
                 if (status == 'OK') {
                   directionsDisplay.setDirections(result);

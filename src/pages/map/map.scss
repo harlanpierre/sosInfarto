@@ -1,24 +1,24 @@
 page-map {
-    .ion-title {
-      position: absolute;
-      top: 0;
-      padding: 0 35px 1px;
-      height: 100%;
-    }
-    #map {
-        height: 35%;
-        top: -14px;
+  .ion-title {
+    position: absolute;
+    top: 0;
+    padding: 0 35px 1px;
+    height: 100%;
+  }
+  #map {
+      height: 35%;
+      top: -14px;
 
-    }
-    .body{
-      height: 93%;
-    }
-    .localizar {
-      content: url(../../assets/icon/icone_localiza.png);
-      border-radius: 35px;
-      width: 30px;
-      height: 20px;
-    }
-    
+  }
+  .body{
+    height: 93%;
+  }
+  .localizar {
+    content: url(../../assets/icon/icone_localiza.png);
+    border-radius: 35px;
+    width: 30px;
+    height: 20px;
+  }
+
 
 }

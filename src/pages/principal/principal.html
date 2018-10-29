@@ -1,44 +1,59 @@
 <ion-header>
-  <custom-logged-header [title]="view | capitalize:true"></custom-logged-header>
+  <ion-navbar color="primary" >
+    <custom-logged-header ></custom-logged-header>
+    <ion-title class="ion-title" style="top: 60px; right: 40px; left: 55px;">
+          <img [src]="'assets/images/logo_app_horizontal.png'"/>
+    </ion-title>
+    <!-- <img [src]="'assets/images/logo_app_horizontal.png'" style="
+    width: 190px;
+    height: 40px;
+    position: absolute;
+    top: 0;" /> -->
 
-</ion-header>
+  </ion-navbar>
 
-
-<ion-content padding>
-
-  <div class="arredondar">
-
-    <h1 text-center>
-      <a (click)='onSinaisInfarto()'>
-        <img [src]="'assets/icon/bot_infarto.png'" item-start style=" border-radius: 10px;
-          width: 100px;
-          height: 100px;" />
-      </a>
-    </h1>
-    <p style="text-align: center">Identificar sinais de infarto</p>
+  </ion-header>
 
 
-    <h1 text-center>
-      <a (click)='onUnidadesProxima()'>
-        <img [src]="'assets/icon/bot_localizador.png'" item-start style=" border-radius: 10px;
-          width: 100px;
-          height: 100px;" />
-      </a>
-    </h1>
-    <p style="text-align: center">Localizar Unidade de Saúde</p>
+  <ion-content padding>
+
+    <div style=" border-radius: 20px;
+    background-color: rgba(145, 175, 231, 0.74);
+    padding: 10px;
+    margin: 1px;
+    opacity: 0.8;">
+
+      <h1 text-center>
+        <a (click)='onSinaisInfarto()'>
+          <img [src]="'assets/icon/bot_infarto.png'" item-start style=" border-radius: 10px;
+            width: 100px;
+            height: 100px;" />
+        </a>
+      </h1>
+      <p style="text-align: center">Identificar sinais de infarto</p>
+
+
+      <h1 text-center>
+        <a (click)='onUnidadesProxima()'>
+          <img [src]="'assets/icon/bot_localizador.png'" item-start style=" border-radius: 10px;
+            width: 100px;
+            height: 100px;" />
+        </a>
+      </h1>
+      <p style="text-align: center">Localizar Unidade de Saúde</p>
 
 
 
-    <h1 text-center>
-      <a (click)="onAcionarEmergencia()">
-        <img [src]="'assets/icon/bot_fone.png'" item-start style=" border-radius: 10px;
-          width: 100px;
-          height: 100px;" />
-      </a>
-    </h1>
-    <p style="text-align: center">Ligar para emergência</p>
+      <h1 text-center>
+        <a (click)="onAcionarEmergencia()">
+          <img [src]="'assets/icon/bot_fone.png'" item-start style=" border-radius: 10px;
+            width: 100px;
+            height: 100px;" />
+        </a>
+      </h1>
+      <p style="text-align: center">Ligar para emergência</p>
 
-  </div>
+    </div>
 
 
-</ion-content>
+  </ion-content>

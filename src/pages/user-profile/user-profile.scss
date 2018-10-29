@@ -53,4 +53,10 @@ page-user-profile {
  .text-input::-webkit-input-placeholder {
     color: white;
   }
+  .ion-title {
+    position: absolute;
+    top: 0;
+    padding: 0 35px 1px;
+    height: 100%;
+  }
 }

@@ -1,7 +1,14 @@
 page-prevencao {
   .wrapper-content {
-    background: white;
-    border-radius: 15px;
+    border-radius: 20px;
+    background-color: #cadfe899;
     padding: 10px;
+    margin: 1px;
+  }
+  .ion-title {
+    position: absolute;
+    top: 0;
+    padding: 0 35px 1px;
+    height: 100%;
   }
 }

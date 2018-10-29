@@ -1,6 +1,12 @@
 <ion-header>
 
-  <custom-logged-header [title]="'Perfil do Usuario'"></custom-logged-header>
+  <ion-navbar color="primary">
+    <img [src]="'assets/images/logo_app_horizontal.png'" style="
+    width: 190px;
+    height: 40px;" />
+    <custom-logged-header class="ion-title"></custom-logged-header>
+
+  </ion-navbar>
 
 </ion-header>
 
@@ -46,7 +52,7 @@
       <button ion-button block type="submit" [disabled]="profileForm.form.invalid" class="boxbotao">Salvar</button>
 
     </form>
-  
+
 
 
 </ion-content>
